@@ -8,7 +8,7 @@ const Board = ({ squares, onSquareClick }) => {
     <Square
       key={index}
       value={squares[index]}
-      onClick={() => onSquareClick(index)} // Pass the index correctly
+      onClick={() => onSquareClick(index)} 
     />
   );
 
