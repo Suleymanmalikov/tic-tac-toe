@@ -21,7 +21,5 @@ export const GlobalStyle = createGlobalStyle`
   body {
     display: grid;
     place-items: center;
-    min-height: 100%;
-    height: 100vh;
   }
 `;
