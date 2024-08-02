@@ -1,5 +1,5 @@
 import {
-  Button,
+  RetryButton,
   End,
   TrophyIcon,
   Draw,
@@ -23,7 +23,7 @@ const EndGame = ({ state, send }) => {
           <Status message={getResultMessage(state)} />
         </Winner>
       )}
-      <Button onClick={() => send({ type: "RESET" })}>Retry</Button>
+      <RetryButton onClick={() => send({ type: "RESET" })}>Retry</RetryButton>
     </End>
   );
 };

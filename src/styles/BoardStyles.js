@@ -1,5 +1,4 @@
-import styled, { keyframes } from "styled-components";
-import { PLAYER_O } from "../shared/constants";
+import styled from "styled-components";
 
 export const GameBoard = styled.div`
   display: grid;

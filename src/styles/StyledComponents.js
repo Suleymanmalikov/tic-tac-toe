@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { fadeIn } from "./Animations";
 
 export const Main = styled.main`
   height: 100vh;
@@ -15,15 +16,11 @@ export const Section = styled.section`
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  color: var(--color-2);
-  font-size: 1.3rem;
-`;
-
-export const Footer = styled.footer`
-  display: none;
+  animation: ${fadeIn} 1.5s ease-in-out;
 `;
 
 export const Heading = styled.h1`
+  margin-bottom: 2rem;
   font-family: "Comfortaa", cursive;
   text-align: center;
   font-size: 2.5rem;
