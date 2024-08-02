@@ -8,6 +8,7 @@ import {
 } from "../styles/EndGameStyles";
 import Status from "./Status";
 import { getResultMessage } from "../utils/helpers";
+import { Button } from "../styles/StyledComponents";
 
 const EndGame = ({ state, send }) => {
   return (

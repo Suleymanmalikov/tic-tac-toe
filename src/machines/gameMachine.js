@@ -49,6 +49,9 @@ export const gameMachine = createMachine({
           guard: ({ context, event }) => context.board[event.index] === null,
         },
         RESET: undefined,
+        IDLE: {
+          target: "idle",
+        },
       },
     },
     winner: {},
