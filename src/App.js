@@ -1,6 +1,16 @@
+// App.js
 import React from "react";
 import { useMachine } from "@xstate/react";
 import { gameMachine } from "./machine/gameMachine";
+import {
+  Main,
+  Heading,
+  GameBoard,
+  Tile,
+  Button,
+  WinningMessage,
+  Footer,
+} from "./styles/StyledComponent";
 
 function range(start, end) {
   return Array(end - start)
@@ -10,10 +20,10 @@ function range(start, end) {
 
 const App = () => {
   const [state, send] = useMachine(gameMachine);
-  // Result Message
+
   const resultMessage = () => {
     if (state.matches("winner")) {
-      const [winner, winningLines] = state.context.winner;
+      const [winner] = state.context.winner;
       return `Player ${winner} wins!`;
     }
     if (state.matches("draw")) {
@@ -23,31 +33,26 @@ const App = () => {
   };
 
   return (
-    <main>
-      <h1>Tic Tac Toe</h1>
-      <p className="winningMessage">{resultMessage()}</p>
-      <div className="game-board">
+    <Main>
+      <Heading>Tic Tac Toe</Heading>
+      <WinningMessage>{resultMessage()}</WinningMessage>
+      <GameBoard>
         {range(0, 9).map((index) => (
-          <div
-            className="tile"
+          <Tile
             key={index}
             onClick={() => {
               send({ type: "PLAY", index });
             }}
           >
             {state.context.board[index]}
-          </div>
+          </Tile>
         ))}
-      </div>
-      {/* {!state.matches("playing") && (
-        <button className="btn" onClick={() => send({ type: "RESET" })}>
-          Reset
-        </button>
-      )} */}
-      <button className="btn" onClick={() => send({ type: "RESET" })}>
-        Reset
-      </button>
-    </main>
+      </GameBoard>
+      <Button onClick={() => send({ type: "RESET" })}>Reset</Button>
+      <Footer>
+        <p>Created by: Suleymanguly Malikov</p>
+      </Footer>
+    </Main>
   );
 };
 
