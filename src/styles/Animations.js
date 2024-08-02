@@ -14,10 +14,36 @@ export const bounce = keyframes`
     transform: translateY(0);
   }
   40% {
-    transform: translateY(-8px);
+    transform: translateY(-10px);
   }
   60% {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
+  }
+`;
+
+export const popIn = keyframes`
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+`;
+
+export const pulse = keyframes`
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 `;
 
@@ -29,7 +55,7 @@ export const colorChangeWinning = keyframes`
     color: var(--color-1);
   }
   100% {
-    color: 	#99cc99;
+    color: #99cc99;
   }
 `;
 

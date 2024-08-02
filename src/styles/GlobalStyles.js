@@ -19,6 +19,11 @@ export const GlobalStyle = createGlobalStyle`
 
     --color-5-transparent: rgba(52, 61, 70, 0.9);
 
+    --x-color: #011f4b;
+    --o-color: #ff0000;    
+    --x-background-color: #cce5cc;
+    --o-background-color: #71131b;
+
     --header-color: #f9f9f9;
   }
 
