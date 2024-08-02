@@ -1,4 +1,3 @@
-// App.js
 import React from "react";
 import { useMachine } from "@xstate/react";
 import { gameMachine } from "./machine/gameMachine";
@@ -50,7 +49,7 @@ const App = () => {
       </GameBoard>
       <Button onClick={() => send({ type: "RESET" })}>Reset</Button>
       <Footer>
-        <p>Created by: Suleymanguly Malikov</p>
+        <h2>Created by: Suleymanguly Malikov</h2>
       </Footer>
     </Main>
   );

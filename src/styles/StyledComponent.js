@@ -5,16 +5,17 @@ export const Main = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 `;
 
 export const Footer = styled.footer`
   margin-top: 2rem;
-  font-size: 1rem;
+  font-size: 0.7rem;
   color: #333;
   text-align: center;
-  p {
+  h2 {
     margin: 0;
+    font-weight: 100;
   }
 `;
 
@@ -27,8 +28,8 @@ export const GameBoard = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  height: 50vmin;
-  width: 50vmin;
+  height: 40vmin;
+  width: 40vmin;
   background-color: #c6c6c6;
   box-shadow: -4vmin 4vmin 6vmin #555;
 `;
@@ -44,7 +45,7 @@ export const Tile = styled.div`
 `;
 
 export const Button = styled.button`
-  padding: 1.5rem 3rem;
+  padding: 1rem 2rem;
   background-color: #333;
   font-size: 1.5rem;
   color: #fff;

@@ -16,12 +16,12 @@ export const GlobalStyle = createGlobalStyle`
     background-color: #bababa;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
-    height: 100%;
   }
 
   body {
     display: grid;
     place-items: center;
     min-height: 100%;
+    height: 100vh;
   }
 `;
