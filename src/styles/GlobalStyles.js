@@ -17,6 +17,8 @@ export const GlobalStyle = createGlobalStyle`
     --color-2:  #a7adba;
     --color-1: 	#c0c5ce;
 
+    --color-5-transparent: rgba(52, 61, 70, 0.9);
+
     --header-color: #f9f9f9;
   }
 
@@ -27,8 +29,8 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     display: grid;
-    place-items: center;
-    min-height: 100vh;
+    /* place-items: center; */
+    /* min-height: 100vh; */
     margin: 0;
   }
 `;

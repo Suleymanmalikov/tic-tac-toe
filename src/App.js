@@ -10,22 +10,30 @@ import {
   Section,
 } from "./styles/StyledComponents";
 import { getResultMessage } from "./utils/helpers";
+import EndGame from "./components/EndGame";
 
 const App = () => {
   const [state, send] = useGame();
 
   return (
     <Main>
-      <Section>
-        <Heading>Tic Tac Toe</Heading>
-        <Status message={getResultMessage(state)} />
+      {!state.matches("playing") ? (
+        <EndGame state={state} send={send} />
+      ) : (
+        <Section>
+          <Heading>Tic Tac Toe</Heading>
+          {state.matches("playing") && (
+            <Status message={getResultMessage(state)} />
+          )}
 
-        <Board
-          board={state.context.board}
-          onTileClick={(index) => send({ type: "PLAY", index })}
-        />
-        <Button onClick={() => send({ type: "RESET" })}>Retry</Button>
-      </Section>
+          <Board
+            board={state.context.board}
+            onTileClick={(index) => send({ type: "PLAY", index })}
+          />
+          {/* <Button onClick={() => send({ type: "RESET" })}>Retry</Button> */}
+        </Section>
+      )}
+
       <Footer>
         <h2>Created by: Suleymanguly Malikov</h2>
       </Footer>
