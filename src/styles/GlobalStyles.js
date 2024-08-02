@@ -6,20 +6,29 @@ export const GlobalStyle = createGlobalStyle`
   * {
     position: relative;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
   :root {
+    --color-5:  #343d46;
+    --color-4: 	#4f5b66;
+    --color-3:  #65737e;
+    --color-2:  #a7adba;
+    --color-1: 	#c0c5ce;
 
+    --header-color: #f9f9f9;
   }
 
   html {
-    background-color: #bababa;
+    background-color: var(--color-5);
     font-family: "Roboto", sans-serif;
-    font-weight: 500;
   }
 
   body {
     display: grid;
     place-items: center;
+    min-height: 100vh;
+    margin: 0;
   }
 `;

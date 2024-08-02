@@ -3,38 +3,43 @@ import styled from "styled-components";
 export const Main = styled.main`
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+`;
+
+export const Section = styled.section`
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
 `;
 
 export const Footer = styled.footer`
-  margin-top: 2rem;
-  font-size: 1rem;
-  color: #333;
-  text-align: center;
-  p {
-    margin: 0;
-  }
+  display: none;
 `;
 
 export const Heading = styled.h1`
   font-family: "Comfortaa", cursive;
   text-align: center;
+  font-size: 2.5rem;
+  color: var(--header-color);
 `;
 
 export const Button = styled.button`
-  padding: 1.5rem 3rem;
-  background-color: #333;
-  font-size: 1.5rem;
-  color: #fff;
-  border: none;
+  margin-top: 1.5rem;
+  padding: 1rem 2rem;
+  background-color: var(--color-1);
+  color: var(--color-5);
+  border: solid 2px var(--color-5);
+  font-size: 1.4rem;
+  font-weight: 700;
   border-radius: 0.5rem;
   cursor: pointer;
-`;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 
-export const WinningMessage = styled.p`
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #000;
+  &:hover {
+    background-color: var(--color-5);
+    color: var(--color-1);
+    border: solid 2px var(--color-1);
+  }
 `;
