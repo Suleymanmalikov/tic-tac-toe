@@ -81,4 +81,4 @@ This will execute the tests defined in the `__tests__` directory and provide fee
 
 ## Project Link
 
-You can view and interact with the project [here](https://tictactoefun.vercel.app/).
+You can view and interact with the project <a href="https://tictactoefun.vercel.app/" target="_blank">here</a>
