@@ -1,6 +1,5 @@
 import { createActor } from "xstate";
 import { gameMachine } from "../machines/gameMachine";
-import { PLAYER_X } from "../shared/constants";
 import "@testing-library/jest-dom";
 
 test("gameMachine should handle START and PLAY events", () => {
