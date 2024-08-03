@@ -54,7 +54,7 @@ export const gameMachine = createMachine({
     },
     playing: {
       after: {
-        700: [
+        200: [
           {
             target: "winner",
             guard: ({ context }) => !!checkWin(context.board),
