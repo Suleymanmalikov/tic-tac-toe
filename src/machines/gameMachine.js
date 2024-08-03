@@ -1,5 +1,9 @@
 import { createMachine, assign } from "xstate";
-import { checkWin } from "../utils/helpers";
+import {
+  checkWin,
+  getAvailableSquares,
+  getRandomSquare,
+} from "../utils/helpers";
 import { PLAYER_O, PLAYER_X } from "../shared/constants";
 
 const initialContext = {
@@ -8,6 +12,7 @@ const initialContext = {
   winner: null,
   moves: 0,
   boardSize: null,
+  gameMode: null,
 };
 
 export const gameMachine = createMachine({
@@ -22,7 +27,7 @@ export const gameMachine = createMachine({
     selectingBoardSize: {
       on: {
         SELECT_SIZE: {
-          target: "playing",
+          target: "selectingGameMode",
           actions: assign({
             boardSize: ({ context, event }) => event.size,
             board: ({ context, event }) =>
@@ -34,20 +39,35 @@ export const gameMachine = createMachine({
         },
       },
     },
-    playing: {
-      always: [
-        {
-          target: "winner",
-          guard: ({ context }) => !!checkWin(context.board),
+    selectingGameMode: {
+      on: {
+        SELECT_MODE: {
+          target: "playing",
           actions: assign({
-            winner: ({ context }) => checkWin(context.board),
+            gameMode: ({ context, event }) => event.mode,
           }),
         },
-        {
-          target: "draw",
-          guard: ({ context }) => context.board.every((cell) => cell),
+        SELECT_SIZE: {
+          target: "selectingBoardSize",
         },
-      ],
+      },
+    },
+    playing: {
+      after: {
+        700: [
+          {
+            target: "winner",
+            guard: ({ context }) => !!checkWin(context.board),
+            actions: assign({
+              winner: ({ context }) => checkWin(context.board),
+            }),
+          },
+          {
+            target: "draw",
+            guard: ({ context }) => context.board.every((cell) => cell),
+          },
+        ],
+      },
       on: {
         PLAY: {
           actions: assign({
@@ -61,6 +81,7 @@ export const gameMachine = createMachine({
             moves: ({ context }) => context.moves + 1,
           }),
           guard: ({ context, event }) => context.board[event.index] === null,
+          target: "aiMove",
         },
         RESET: undefined,
         IDLE: {
@@ -70,6 +91,30 @@ export const gameMachine = createMachine({
           target: "selectingBoardSize",
         },
       },
+    },
+    aiMove: {
+      always: [
+        {
+          target: "playing",
+          actions: assign({
+            board: ({ context }) => {
+              const availableSquares = getAvailableSquares(context.board);
+              const randomSquare = getRandomSquare(availableSquares);
+              const updatedBoard = [...context.board];
+              updatedBoard[randomSquare] = context.player;
+              return updatedBoard;
+            },
+            player: ({ context }) =>
+              context.player === PLAYER_X ? PLAYER_O : PLAYER_X,
+            moves: ({ context }) => context.moves + 1,
+          }),
+          guard: ({ context }) =>
+            context.gameMode === "AI_VS_PLAYER" && context.player === PLAYER_O,
+        },
+        {
+          target: "playing",
+        },
+      ],
     },
     winner: {},
     draw: {},

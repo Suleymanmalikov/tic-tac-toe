@@ -51,3 +51,14 @@ export const getResultMessage = (state) => {
   }
   return `${state.context.player}'s turn`;
 };
+
+export const getAvailableSquares = (board) => {
+  return board
+    .map((value, index) => (value === null ? index : null))
+    .filter((value) => value !== null);
+};
+
+export const getRandomSquare = (availableSquares) => {
+  const randomIndex = Math.floor(Math.random() * availableSquares.length);
+  return availableSquares[randomIndex];
+};
