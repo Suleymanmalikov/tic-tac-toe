@@ -1,10 +1,10 @@
 import React from "react";
 import { GameBoard, Tile } from "../styles/BoardStyles";
-import { PLAYER_O, PLAYER_X } from "../shared/constants"; // Correct import
+import { PLAYER_O, PLAYER_X } from "../shared/constants";
 
 const Board = ({ board, onTileClick }) => {
   return (
-    <GameBoard>
+    <GameBoard board={board}>
       {board.map((value, index) => (
         <Tile
           key={index}

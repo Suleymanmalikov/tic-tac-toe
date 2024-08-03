@@ -1,24 +1,43 @@
-import { PLAYER_X, PLAYER_O, winningLines_3X3 } from "../shared/constants";
+import { winningLines_3X3, winningLines_4x4 } from "../shared/constants";
+
+export const getBoardLen = (board) => {
+  if (!board || board.length === 0) {
+    return 3;
+  }
+  return Math.sqrt(board.length);
+};
 
 export const checkWin = (board) => {
+  if (board.length === 9) {
+    return checkWin3X3(board);
+  } else if (board.length === 16) {
+    return checkWin4X4(board);
+  }
+  return false;
+};
+const checkWin3X3 = (board) => {
   for (let line of winningLines_3X3) {
-    const xWon = line.every((index) => {
-      return board[index] === PLAYER_X;
-    });
+    const [a, b, c] = line;
 
-    if (xWon) {
-      return [PLAYER_X, line];
-    }
-
-    const oWon = line.every((index) => {
-      return board[index] === PLAYER_O;
-    });
-
-    if (oWon) {
-      return [PLAYER_O, line];
+    if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+      return [board[a], line];
     }
   }
+  return false;
+};
+const checkWin4X4 = (board) => {
+  for (let line of winningLines_4x4) {
+    const [a, b, c, d] = line;
 
+    if (
+      board[a] &&
+      board[a] === board[b] &&
+      board[a] === board[c] &&
+      board[a] === board[d]
+    ) {
+      return [board[a], line];
+    }
+  }
   return false;
 };
 

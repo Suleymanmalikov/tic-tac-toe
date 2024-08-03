@@ -2,23 +2,22 @@ import styled, { css } from "styled-components";
 
 import { PLAYER_O, PLAYER_X } from "../shared/constants";
 import { fadeIn, popIn, pulse } from "./Animations";
+import { getBoardLen } from "../utils/helpers";
 
 export const playerOStyles = css`
   color: var(--o-color);
-  /* background-color: var(--o-background-color); */
   animation: ${fadeIn} 0.5s ease-out, ${pulse} 0.5s ease-in-out;
 `;
 
 export const playerXStyles = css`
   color: var(--x-color);
-  /* background-color: var(--x-background-color); */
   animation: ${popIn} 0.5s ease-out, ${pulse} 0.5s ease-in-out;
 `;
 
 export const GameBoard = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(${(props) => getBoardLen(props.board)}, 1fr);
+  grid-template-rows: repeat(${(props) => getBoardLen(props.board)}, 1fr);
   gap: 0.5rem;
   height: 50vmin;
   width: 50vmin;

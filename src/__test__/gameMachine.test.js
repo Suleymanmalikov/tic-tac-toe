@@ -9,10 +9,13 @@ test("gameMachine should handle START and PLAY events", () => {
   expect(actor.getSnapshot().value).toBe("idle");
 
   actor.send({ type: "START" });
+  expect(actor.getSnapshot().value).toBe("selectingBoardSize");
+  const boardSize = 3;
+  actor.send({ type: "SELECT_SIZE", size: boardSize });
   expect(actor.getSnapshot().value).toBe("playing");
 
-  actor.send({ type: "PLAY", index: 0 });
-  expect(actor.getSnapshot().context.board[0]).toBe(PLAYER_X);
+  const expectedBoard = Array(boardSize * boardSize).fill(null);
+  expect(actor.getSnapshot().context.board).toEqual(expectedBoard);
 
   actor.stop();
 });

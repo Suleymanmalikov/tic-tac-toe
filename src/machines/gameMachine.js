@@ -1,13 +1,13 @@
-// src/machines/gameMachine.js
 import { createMachine, assign } from "xstate";
 import { checkWin } from "../utils/helpers";
 import { PLAYER_O, PLAYER_X } from "../shared/constants";
 
 const initialContext = {
-  board: Array(9).fill(null),
+  board: [],
   player: PLAYER_X,
   winner: null,
   moves: 0,
+  boardSize: null,
 };
 
 export const gameMachine = createMachine({
@@ -16,7 +16,22 @@ export const gameMachine = createMachine({
   states: {
     idle: {
       on: {
-        START: "playing",
+        START: "selectingBoardSize",
+      },
+    },
+    selectingBoardSize: {
+      on: {
+        SELECT_SIZE: {
+          target: "playing",
+          actions: assign({
+            boardSize: ({ context, event }) => event.size,
+            board: ({ context, event }) =>
+              Array(event.size * event.size).fill(null),
+          }),
+        },
+        IDLE: {
+          target: "idle",
+        },
       },
     },
     playing: {
@@ -51,6 +66,9 @@ export const gameMachine = createMachine({
         IDLE: {
           target: "idle",
         },
+        SELECT_SIZE: {
+          target: "selectingBoardSize",
+        },
       },
     },
     winner: {},
@@ -58,7 +76,7 @@ export const gameMachine = createMachine({
   },
   on: {
     RESET: {
-      target: ".playing",
+      target: ".selectingBoardSize",
       actions: assign(initialContext),
     },
   },

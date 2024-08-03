@@ -21,8 +21,6 @@ export const GlobalStyle = createGlobalStyle`
 
     --x-color: #011f4b;
     --o-color: #ff0000;    
-    --x-background-color: #cce5cc;
-    --o-background-color: #71131b;
 
     --header-color: #f9f9f9;
   }

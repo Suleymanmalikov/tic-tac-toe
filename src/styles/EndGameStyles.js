@@ -6,6 +6,7 @@ import {
   colorChangeWinning,
   colorChangeDraw,
 } from "./Animations";
+import { Button } from "./StyledComponents";
 
 export const End = styled.div`
   display: flex;

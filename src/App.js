@@ -1,9 +1,15 @@
 import React from "react";
 import useGame from "./hooks/useGame";
 import Board from "./components/Board";
-import { Main, Heading, Section, Button } from "./styles/StyledComponents";
+import {
+  Main,
+  Heading,
+  Section,
+  GoBackButton,
+} from "./styles/StyledComponents";
 import EndGame from "./components/EndGame";
 import StartGame from "./components/StartGame";
+import BoardSizeSelection from "./components/BoardSizeSelection";
 
 const App = () => {
   const [state, send] = useGame();
@@ -12,6 +18,8 @@ const App = () => {
     <Main>
       {state.matches("idle") ? (
         <StartGame send={send} state={state} />
+      ) : state.matches("selectingBoardSize") ? (
+        <BoardSizeSelection send={send} />
       ) : !state.matches("playing") ? (
         <EndGame state={state} send={send} />
       ) : (
@@ -21,9 +29,9 @@ const App = () => {
             board={state.context.board}
             onTileClick={(index) => send({ type: "PLAY", index })}
           />
-          <Button onClick={() => send({ type: "IDLE" })}>
-            Go Back to Menu
-          </Button>
+          <GoBackButton onClick={() => send({ type: "SELECT_SIZE" })}>
+            Go Back
+          </GoBackButton>
         </Section>
       )}
     </Main>
