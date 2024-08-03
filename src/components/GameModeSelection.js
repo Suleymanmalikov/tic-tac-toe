@@ -1,4 +1,3 @@
-// GameModeSelection.js
 import React from "react";
 import {
   Main,

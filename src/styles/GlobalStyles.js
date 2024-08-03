@@ -32,8 +32,6 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     display: grid;
-    /* place-items: center; */
-    /* min-height: 100vh; */
     margin: 0;
   }
 `;
