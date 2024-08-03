@@ -6,7 +6,6 @@ import {
   colorChangeWinning,
   colorChangeDraw,
 } from "./Animations";
-import { Button } from "./StyledComponents";
 
 export const End = styled.div`
   display: flex;
@@ -24,7 +23,6 @@ export const End = styled.div`
   animation: ${fadeIn} 1.5s ease-in-out;
 `;
 
-//Win component
 export const TrophyIcon = styled(FaTrophy)`
   font-size: 5rem;
   animation: ${colorChangeWinning} 6s infinite;
@@ -35,7 +33,6 @@ export const Winner = styled.div`
   animation: ${bounce} 2s infinite, ${colorChangeWinning} 6s infinite;
 `;
 
-//Draw component
 export const HandshakeIcon = styled(FaHandshake)`
   font-size: 5rem;
   animation: ${bounce} 2s infinite, ${colorChangeDraw} 6s infinite;
