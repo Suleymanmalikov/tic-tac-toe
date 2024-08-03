@@ -16,16 +16,16 @@ const GameModeSelection = ({ send }) => {
         <SubHeading>Select Game Mode</SubHeading>
         <Buttons>
           <Button
-            onClick={() => send({ type: "SELECT_MODE", mode: "AI_VS_PLAYER" })}
-          >
-            AI vs Player
-          </Button>
-          <Button
             onClick={() =>
               send({ type: "SELECT_MODE", mode: "PLAYER_VS_PLAYER" })
             }
           >
             Player vs Player
+          </Button>
+          <Button
+            onClick={() => send({ type: "SELECT_MODE", mode: "AI_VS_PLAYER" })}
+          >
+            AI vs Player
           </Button>
         </Buttons>
       </Section>
