@@ -1,5 +1,5 @@
+// src/machines/gameMachine.js
 import { createMachine, assign } from "xstate";
-
 import { checkWin } from "../utils/helpers";
 import { PLAYER_O, PLAYER_X } from "../shared/constants";
 
@@ -11,7 +11,6 @@ const initialContext = {
 };
 
 export const gameMachine = createMachine({
-  /** @xstate-layout N4IgpgJg5mDOIC5QAoC2BDAxgCwJYDswBKAYgCUBRAZQoBUBtABgF1FQAHAe1lwBddO+NiAAeiACwAmADQgAnogCMAVkUA6cQHZljRgDZGyvZMaTNAX3Oy0WPISJr2AG3RyCUEgAUAMgEEAmkysSCBcPPyCwmIIipqSagAcAJwpSYqMirEJ4gmyCggJ6gDMurqS4opF4kmSekmW1hg4BMSOLm74HkHCYXwCQiHRkgnKakWpSeJ6mlWStXlKCUWJpYya4sqamap6llYg+JwQcMI2zfY93H2Rg4gAtHoLCA8NIGd2rc6u7pfh-VFKPR6NSKCYzIrTTJFJ6KQpqPQ6XSaYzicaaJIWfbvFoOADuBEIACdftcBqBouMkmphtp9KjlBUirl5It1AjSsjyuMEowiq9sfY1BBCehcSSImTRBIZCyEDU1BjEZJJuJUWs9uYgA */
   initial: "idle",
   context: initialContext,
   states: {

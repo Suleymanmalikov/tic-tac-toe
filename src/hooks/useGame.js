@@ -3,6 +3,7 @@ import { gameMachine } from "../machines/gameMachine";
 
 const useGame = () => {
   const [state, send] = useMachine(gameMachine);
+
   return [state, send];
 };
 
