@@ -24,7 +24,7 @@ const GameModeSelection = ({ send }) => {
           <Button
             onClick={() => send({ type: "SELECT_MODE", mode: "AI_VS_PLAYER" })}
           >
-            Computer vs Player
+            AI vs Player
           </Button>
         </Buttons>
       </Section>

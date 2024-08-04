@@ -1,4 +1,9 @@
-import { winningLines_3X3, winningLines_4x4 } from "../shared/constants";
+import {
+  winningLines_3X3,
+  winningLines_4x4,
+  PLAYER_O,
+  PLAYER_X,
+} from "../shared/constants";
 
 export const getBoardLen = (board) => {
   if (!board || board.length === 0) {
@@ -42,7 +47,14 @@ const checkWin4X4 = (board) => {
 };
 
 export const getResultMessage = (state) => {
-  if (state.matches("winner")) {
+  if (state.matches("aiDelay") || state.matches("aiTurn")) {
+    return "AI is thinking...";
+  }
+  if (state.matches("winner") && state.context.previousTurn === "aiTurn") {
+    const [winner] = state.context.winner;
+    return `AI wins! 🤖`;
+  }
+  if (state.matches("winner") && state.context.previousTurn === "playerTurn") {
     const [winner] = state.context.winner;
     return `Player ${winner} wins!`;
   }
@@ -52,6 +64,7 @@ export const getResultMessage = (state) => {
   return `${state.context.player}'s turn`;
 };
 
+// AI logic
 export const getAvailableSquares = (board) => {
   return board
     .map((value, index) => (value === null ? index : null))
@@ -61,4 +74,34 @@ export const getAvailableSquares = (board) => {
 export const getRandomSquare = (availableSquares) => {
   const randomIndex = Math.floor(Math.random() * availableSquares.length);
   return availableSquares[randomIndex];
+};
+
+const findBlockingMove = (board, player) => {
+  const opponent = player === PLAYER_X ? PLAYER_O : PLAYER_X;
+  const availableSquares = getAvailableSquares(board);
+
+  for (const move of availableSquares) {
+    const tempBoard = [...board];
+    tempBoard[move] = player;
+    if (!!checkWin(tempBoard)) {
+      return move;
+    }
+  }
+  for (const move of availableSquares) {
+    const tempBoard = [...board];
+    tempBoard[move] = opponent;
+    if (!!checkWin(tempBoard)) {
+      return move;
+    }
+  }
+  return null;
+};
+
+export const aiMove = (board, player) => {
+  const availableSquares = getAvailableSquares(board);
+
+  const blockMove = findBlockingMove(board, player);
+  if (blockMove !== null) return blockMove;
+
+  return getRandomSquare(availableSquares);
 };

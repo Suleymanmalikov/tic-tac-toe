@@ -1,16 +1,14 @@
 import React from "react";
+
 import useGame from "./hooks/useGame";
 import Board from "./components/Board";
-import {
-  Main,
-  Heading,
-  Section,
-  GoBackButton,
-} from "./styles/StyledComponents";
+import { Main, Heading, Section } from "./styles/StyledComponents";
 import EndGame from "./components/EndGame";
 import StartGame from "./components/StartGame";
 import BoardSizeSelection from "./components/BoardSizeSelection";
 import GameModeSelection from "./components/GameModeSelection";
+import Status from "./components/Status";
+import { getResultMessage } from "./utils/helpers";
 
 const App = () => {
   const [state, send] = useGame();
@@ -23,18 +21,24 @@ const App = () => {
         <BoardSizeSelection send={send} />
       ) : state.matches("selectingGameMode") ? (
         <GameModeSelection send={send} />
-      ) : !state.matches("playing") ? (
+      ) : state.matches("winner") || state.matches("draw") ? (
         <EndGame state={state} send={send} />
       ) : (
         <Section>
+          <pre style={{ color: "white" }}>
+            {JSON.stringify(
+              { value: state.value, mode: state.context.gameMode },
+              null,
+              2
+            )}
+          </pre>
           <Heading>Tic Tac Toe</Heading>
+
+          <Status message={getResultMessage(state)} />
           <Board
             board={state.context.board}
-            onTileClick={(index) => send({ type: "PLAY", index })}
+            onTileClick={(index) => send({ type: "PLAY_TURN", index })}
           />
-          <GoBackButton onClick={() => send({ type: "SELECT_SIZE" })}>
-            Go Back
-          </GoBackButton>
         </Section>
       )}
     </Main>
