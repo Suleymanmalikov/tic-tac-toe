@@ -17,7 +17,7 @@ Welcome to the Tic-Tac-Toe game project! This project is a front-end web applica
 This project is a simple implementation of Tic-Tac-Toe with the following features:
 
 - After Starting Game users can select the board size (3x3 or 4x4).
-- Options to play against a Computer or with another player.
+- Options to play against an AI or with another player.
 - A game board that updates with each move.
 - Detection of the game outcome (win, draw, or ongoing).
 - A reset button to start a new game.
@@ -25,7 +25,7 @@ This project is a simple implementation of Tic-Tac-Toe with the following featur
 ## Features
 
 - **Board Size Selection:** Choose between a 3x3 or 4x4 board.
-- **Game Modes:** Play against another player or a Computer.
+- **Game Modes:** Play against another player or an AI.
 - **State Management:** Uses XState for managing game states and transitions.
 - **Styling:** Styled Components for a clean and responsive UI.
 - **Unit Testing:** Comprehensive tests for game functionality and state management.
