@@ -1,6 +1,6 @@
 # Tic-Tac-Toe Game
 
-Welcome to the Tic-Tac-Toe game project! This project is a front-end web application built with React, XState, and Styled Components. It includes a Tic-Tac-Toe game where users can select the board size and choose between different game modes.
+Welcome to the Tic-Tac-Toe game project! This project is a front-end web application built with React, XState, and Styled Components. Users can select the board size and choose between different game modes.
 
 ## Table of Contents
 
