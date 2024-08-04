@@ -25,13 +25,6 @@ const App = () => {
         <EndGame state={state} send={send} />
       ) : (
         <Section>
-          <pre style={{ color: "white" }}>
-            {JSON.stringify(
-              { value: state.value, mode: state.context.gameMode },
-              null,
-              2
-            )}
-          </pre>
           <Heading>Tic Tac Toe</Heading>
 
           <Status message={getResultMessage(state)} />
