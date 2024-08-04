@@ -47,10 +47,13 @@ export const Footer = styled.footer`
   left: 0;
   width: 100%;
   background-color: var(--color-1);
-  color: var(--color-5);
   font-size: 0.7rem;
   text-align: center;
   h2 {
     font-weight: 100;
+  }
+  a {
+    color: var(--color-5);
+    text-decoration: none;
   }
 `;

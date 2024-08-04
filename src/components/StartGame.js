@@ -14,7 +14,11 @@ const StartGame = ({ state, send }) => {
         Start Game
       </StartButton>
       <Footer>
-        <h2>Created by: Suleymanguly Malikov</h2>
+        <h2>
+          <a href="https://github.com/Suleymanmalikov" target="_blank">
+            Created by: Suleymanguly Malikov
+          </a>
+        </h2>
       </Footer>
     </StartComponent>
   );
