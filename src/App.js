@@ -9,6 +9,7 @@ import BoardSizeSelection from "./components/BoardSizeSelection";
 import GameModeSelection from "./components/GameModeSelection";
 import Status from "./components/Status";
 import { getResultMessage } from "./utils/helpers";
+import { Analytics } from "@vercel/analytics/react";
 
 const App = () => {
   const [state, send] = useGame();
@@ -34,6 +35,13 @@ const App = () => {
           />
         </Section>
       )}
+      <Analytics
+        id="ANALYTICS_ID"
+        debug
+        trackEvent={(event) => {
+          console.log("tracked event", event);
+        }}
+      />
     </Main>
   );
 };
